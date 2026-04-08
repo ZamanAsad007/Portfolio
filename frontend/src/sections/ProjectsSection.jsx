@@ -23,7 +23,7 @@ export default function ProjectsSection() {
   return (
     <section id="projects" className="py-16">
       <SectionTitle>Projects</SectionTitle>
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {PROJECTS.map((p, idx) => (
           <Card
             key={`${p.title}-${idx}`}

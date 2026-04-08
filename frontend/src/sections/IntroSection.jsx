@@ -1,22 +1,27 @@
 export default function IntroSection() {
   return (
-    <section className="grid gap-10 py-16 md:grid-cols-2 md:items-center">
-      <div className="text-left">
-        <div className="text-sm font-medium text-slate-300">Hi, I’m</div>
-        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white md:text-5xl">
-          Asif
+    <section className="flex min-h-[calc(100svh-6rem)] items-center py-16">
+      <div className="w-full text-left">
+        <h1 className="font-heading mt-3 flex flex-wrap items-center gap-3 text-4xl font-semibold tracking-tight text-slate-200 md:text-5xl">
+          <span>Hi, I’m ASIF.</span>
+          <img
+            src="/wave.gif"
+            alt="Waving hand"
+            className="h-10 w-10 select-none md:h-12 md:w-12"
+            loading="lazy"
+            decoding="async"
+          />
         </h1>
-        <p className="mt-4 text-base leading-7 text-slate-300">
-          23 year old JavaScript developer from Dhaka, Bangladesh.
+        <p className="font-body mt-4 text-base leading-7 text-slate-300">
+          23 year old MERN developer from Dhaka, Bangladesh.
+          <img
+            src="/bd-flag.svg"
+            alt="Bangladesh"
+            className="ml-2 inline-block h-5 w-5 align-text-bottom"
+            loading="lazy"
+            decoding="async"
+          />
         </p>
-      </div>
-
-      <div className="flex items-center justify-center">
-        <div className="h-64 w-64 rounded-3xl bg-slate-900/40 ring-1 ring-slate-800 md:h-80 md:w-80">
-          <div className="flex h-full w-full items-center justify-center text-sm text-slate-400">
-            Image
-          </div>
-        </div>
       </div>
     </section>
   )

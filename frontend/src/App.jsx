@@ -14,8 +14,11 @@ function App() {
   const cvHref = '/cv.pdf'
 
   return (
-    <div className="min-h-svh bg-slate-950 text-slate-100">
-      <SocialOverlay gmailComposeUrl={gmailComposeUrl} />
+    <div
+      id="top"
+      className="font-body min-h-svh bg-[rgb(35,37,48)] text-slate-200"
+    >
+      <SocialOverlay />
       <Navbar cvHref={cvHref} />
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,56rem)_1fr]">
