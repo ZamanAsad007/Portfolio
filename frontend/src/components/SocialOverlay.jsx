@@ -1,6 +1,8 @@
-import { FaFacebookF, FaGithub, FaLinkedinIn } from 'react-icons/fa'
+import { AiOutlineLinkedin } from 'react-icons/ai'
+import { FaGithub } from 'react-icons/fa'
+import { LiaFacebookSquare } from 'react-icons/lia'
 
-const SOCIAL_LINKS = [
+export const SOCIAL_LINKS = [
   {
     label: 'GitHub',
     href: 'https://github.com/ZamanAsad007',
@@ -9,12 +11,12 @@ const SOCIAL_LINKS = [
   {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/md-asaduzzaman-asif-519154338',
-    Icon: FaLinkedinIn,
+    Icon: AiOutlineLinkedin,
   },
   {
     label: 'Facebook',
     href: 'https://www.facebook.com/zaman.asad.69',
-    Icon: FaFacebookF,
+    Icon: LiaFacebookSquare,
   },
 ]
 
@@ -32,7 +34,7 @@ export default function SocialOverlay() {
             aria-label={item.label}
             title={item.label}
           >
-            <item.Icon className="h-5 w-5" aria-hidden="true" />
+            <item.Icon className="h-6 w-6" aria-hidden="true" />
           </a>
         ))}
       </div>

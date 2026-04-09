@@ -21,6 +21,10 @@ export default function IntroSection() {
             loading="lazy"
             decoding="async"
           />
+          <br />
+          <br />
+          Still Learning, Still Growing.
+          
         </p>
       </div>
     </section>

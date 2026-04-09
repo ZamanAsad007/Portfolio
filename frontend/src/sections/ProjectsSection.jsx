@@ -6,6 +6,8 @@ const PROJECTS = [
     title: 'Project Title',
     description: 'Short description of what the project does.',
     href: '#',
+    githubHref:'https://github.com/ZamanAsad007/MovieEngine',
+    externalHref: 'https://movie-engine-five.vercel.app/',
   },
   {
     title: 'Project Title',
@@ -30,6 +32,10 @@ export default function ProjectsSection() {
             title={p.title}
             description={p.description}
             href={p.href}
+            githubHref={p.githubHref}
+            externalHref={p.externalHref}
+            imageSrc={p.imageSrc}
+            imageAlt={p.imageAlt}
           />
         ))}
       </div>

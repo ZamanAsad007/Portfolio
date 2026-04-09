@@ -20,3 +20,23 @@ html {
 body {
   margin: 0;
 }
+
+#intro-overlay {
+  opacity: 1;
+  transition: opacity 300ms ease;
+}
+
+#intro-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

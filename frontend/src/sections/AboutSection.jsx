@@ -15,16 +15,16 @@ const TECH_STACKS = [
 
 const EDUCATION_HISTORY = [
   {
-    title: 'BSc (or current) — Your Subject',
-    meta: 'Your University — Year–Year',
+    title: 'BSc — Computer Science & Engineering',
+    meta: 'United International University —> Oct 22 - Ongoing',
   },
   {
-    title: 'HSC — Your College',
-    meta: 'Year',
+    title: 'HSC — Cambrian College, Dhaka',
+    meta: '2021',
   },
   {
-    title: 'SSC — Your School',
-    meta: 'Year',
+    title: 'SSC — Chatkhil P.G. Government High School, Noakhali',
+    meta: '2019',
   },
 ]
 
@@ -92,21 +92,36 @@ export default function AboutSection() {
     >
       <SectionTitle>About</SectionTitle>
       <p className="mt-3 text-left text-sm leading-6 text-slate-300">
-        A quick snapshot of my education, skills, and current work status.
+        My name is Md Asaduzzaman Asif, a fourth-year student at <span> </span>  
+        <a
+          href="https://www.uiu.ac.bd/about-uiu/"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-block text-[#7c6dfa] no-underline border-b border-[rgba(124,109,250,0.4)] transition-colors hover:text-[#a89cf7] hover:border-[#a89cf7]"
+        >
+          United International University
+        </a>
+        , currently in my final stretch before graduation. I am passionate
+        about web development and enjoy learning new technologies and solving
+        real-world problems through code. While I am still early in my career,
+        I bring a strong foundation in modern web technologies and a genuine
+        drive to grow and contribute.
       </p>
 
       <div className="mt-8 flex flex-col gap-10 md:flex-row md:items-start">
         <div className="order-1 flex items-center justify-center md:order-2 md:justify-end">
-          <div className="h-64 w-64 rounded-3xl bg-slate-900/40 ring-1 ring-slate-800 md:h-80 md:w-80">
-            <div className="flex h-full w-full items-center justify-center text-sm text-slate-400">
-              Image
-            </div>
-          </div>
+          <img
+            className="h-64 w-64 cursor-pointer rounded-3xl object-cover filter grayscale transition-all duration-300 hover:grayscale-0 ring-1 ring-slate-800 md:h-80 md:w-80"
+            src="/Portfolio.jpg"
+            alt="image description"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
 
         <div className="order-2 md:order-1 md:flex-1">
           <div className="text-center text-sm font-medium text-slate-300">
-            <div className="border-b border-slate-800">
+            <div>
               <ul className="-mb-px flex flex-wrap">
                 {aboutTabs.map((tab) => {
                   const active = aboutTab === tab.key
@@ -118,8 +133,8 @@ export default function AboutSection() {
                         onClick={() => setAboutTab(tab.key)}
                         className={
                           active
-                            ? 'inline-block rounded-t-xl border-b border-indigo-200 p-4 text-indigo-200'
-                            : 'inline-block rounded-t-xl border-b border-transparent p-4 hover:border-indigo-200 hover:text-indigo-200'
+                            ? 'inline-block rounded-t-xl border-b-2 border-[#a89cf7] p-4 text-[#a89cf7]'
+                            : 'inline-block rounded-t-xl border-b-2 border-transparent p-4 text-slate-300 transition-colors hover:border-[#a89cf7] hover:text-[#a89cf7]'
                         }
                         aria-current={active ? 'page' : undefined}
                       >
@@ -136,13 +151,13 @@ export default function AboutSection() {
             {aboutTab === 'work' ? (
               <div className="text-left">
                 <p className="mt-2 text-sm leading-6 text-slate-300">
-                  Still unemployed.
+                  Open to opportunities.
                 </p>
               </div>
             ) : (
               <div className="text-left">
                 <div className="text-sm font-medium text-slate-300">
-                  <div className="border-b border-slate-800">
+                  <div>
                     <ul className="-mb-px flex flex-wrap">
                       {educationTabs.map((tab) => {
                         const active = eduTab === tab.key
@@ -154,8 +169,8 @@ export default function AboutSection() {
                               onClick={() => setEduTab(tab.key)}
                               className={
                                 active
-                                  ? 'inline-block rounded-t-xl border-b border-indigo-200 p-3 text-indigo-200'
-                                  : 'inline-block rounded-t-xl border-b border-transparent p-3 hover:border-indigo-200 hover:text-indigo-200'
+                                  ? 'inline-block rounded-t-xl border-b-2 border-[#a89cf7] p-3 text-[#a89cf7]'
+                                  : 'inline-block rounded-t-xl border-b-2 border-transparent p-3 text-slate-300 transition-colors hover:border-[#a89cf7] hover:text-[#a89cf7]'
                               }
                               aria-current={active ? 'page' : undefined}
                             >
