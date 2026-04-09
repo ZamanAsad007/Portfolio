@@ -3,19 +3,9 @@ import SectionTitle from '../components/SectionTitle.jsx'
 
 const PUBLICATIONS = [
   {
-    title: 'Paper Title',
-    description: 'Short description of the paper/publication.',
-    href: '#',
-  },
-  {
-    title: 'Paper Title',
-    description: 'Short description of the paper/publication.',
-    href: '#',
-  },
-  {
-    title: 'Paper Title',
-    description: 'Short description of the paper/publication.',
-    href: '#',
+    title: 'Blockchain-Based Hajj Pilgrim Registration System: Enhancing Transparency and Security, PID: 273',
+    description: 'Blockchain-Based Hajj Pilgrim Registration System: Enhancing Transparency and Security, Accepted at IEEE SPICSCON 2025 (To be published in IEEE Xplore).',
+    
   },
 ]
 

@@ -49,7 +49,7 @@ function App() {
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,56rem)_1fr]">
             <div className="hidden lg:block" />
 
-            <main className="px-4">
+            <main className="px-5 sm:px-6 [&_p]:text-justify [&_li]:text-justify">
               <IntroSection />
               <AboutSection />
               <ProjectsSection />

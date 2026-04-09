@@ -9,23 +9,24 @@ export default function Card({
   imageAlt = '',
   githubHref,
   externalHref,
+  techStack,
 }) {
   const TitleWrapper = href ? 'a' : 'div'
   const titleWrapperProps = href ? { href } : {}
 
   return (
-    <div className="group block h-full rounded-2xl bg-[rgb(48,50,64)] p-6 text-left shadow-md ring-1 ring-slate-800 transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(100,90,200,0.2)]">
+    <div className="group block h-full overflow-hidden rounded-2xl bg-[rgb(48,50,64)] text-left shadow-md ring-1 ring-slate-800 transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(100,90,200,0.2)]">
       <div className="relative">
         {imageSrc ? (
           <img
-            className="aspect-[16/10] w-full rounded-2xl object-cover"
+            className="aspect-[16/9] w-full object-cover"
             src={imageSrc}
             alt={imageAlt}
             loading="lazy"
             decoding="async"
           />
         ) : (
-          <div className="flex aspect-[16/10] w-full items-center justify-center rounded-2xl bg-slate-900/40 text-sm text-slate-400 ring-1 ring-slate-800">
+          <div className="flex aspect-[16/9] w-full items-center justify-center bg-slate-900/40 text-sm text-slate-400">
             Image
           </div>
         )}
@@ -67,18 +68,33 @@ export default function Card({
         ) : null}
       </div>
 
-      <TitleWrapper
-        {...titleWrapperProps}
-        className={
-          href
-            ? 'mt-6 block text-xl font-semibold tracking-tight text-slate-200 transition-colors group-hover:text-slate-100'
-            : 'mt-6 block text-xl font-semibold tracking-tight text-slate-200'
-        }
-      >
-        {title}
-      </TitleWrapper>
+      <div className="p-6">
+        <TitleWrapper
+          {...titleWrapperProps}
+          className={
+            href
+              ? 'block text-xl font-semibold tracking-tight text-slate-200 transition-colors group-hover:text-slate-100'
+              : 'block text-xl font-semibold tracking-tight text-slate-200'
+          }
+        >
+          {title}
+        </TitleWrapper>
 
-      <p className="mt-3 text-sm leading-6 text-slate-300">{description}</p>
+        <p className="mt-3 text-sm leading-6 text-slate-300">{description}</p>
+
+        {Array.isArray(techStack) && techStack.length > 0 ? (
+          <ul className="mt-4 flex flex-wrap gap-2">
+            {techStack.map((tech, index) => (
+              <li
+                key={`${tech}-${index}`}
+                className="rounded-lg bg-slate-900/40 px-2.5 py-1 text-xs font-medium text-slate-200 ring-1 ring-slate-800"
+              >
+                {tech}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </div>
     </div>
   )
 }

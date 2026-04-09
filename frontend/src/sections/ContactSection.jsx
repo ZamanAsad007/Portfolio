@@ -5,9 +5,7 @@ export default function ContactSection({ gmailComposeUrl }) {
     <section id="contact" className="py-16">
       <SectionTitle>Contact</SectionTitle>
         <p className="mt-3 text-sm leading-6 text-slate-300">
-          Although I’m not currently looking for any new opportunities, my inbox
-          is always open. Whether you have a question or just want to say hi,
-          I’ll try my best to get back to you!
+          Got something in mind? I'm actively looking for new opportunities and always excited to connect with like-minded people. Drop me a message — whether it's work related or just a casual chat, I'd love to hear from you!
         </p>
         <div className="mt-6">
           <a
