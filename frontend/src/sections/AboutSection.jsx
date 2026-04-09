@@ -31,7 +31,7 @@ const EDUCATION_HISTORY = [
 export default function AboutSection() {
   const sectionRef = useRef(null)
   const [revealed, setRevealed] = useState(false)
-  const [aboutTab, setAboutTab] = useState('education')
+  const [aboutTab, setAboutTab] = useState('skills')
 
   useEffect(() => {
     if (typeof window === 'undefined') return
