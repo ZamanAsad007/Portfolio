@@ -104,14 +104,19 @@ export default function AboutSection() {
       </p>
 
       <div className="mt-8 flex flex-col gap-10 md:flex-row md:items-start">
-        <div className="order-1 flex items-center justify-center md:order-2 md:justify-end">
-          <img
-            className="h-64 w-64 cursor-pointer rounded-3xl object-cover filter grayscale transition-all duration-300 hover:grayscale-0 ring-1 ring-slate-800 md:h-80 md:w-80"
-            src="/Portfolio.jpg"
-            alt="image description"
-            loading="lazy"
-            decoding="async"
-          />
+        <div className="order-1 flex justify-center md:order-2 md:justify-end">
+          <div className="flex flex-col items-center">
+            <img
+              className="h-64 w-64 cursor-pointer rounded-3xl object-cover filter grayscale transition-all duration-300 hover:grayscale-0 ring-1 ring-slate-800 md:h-80 md:w-80"
+              src="/Portfolio.jpg"
+              alt="image description"
+              loading="lazy"
+              decoding="async"
+            />
+            <p className="mt-2 text-xs font-medium text-slate-400 sm:text-sm">
+              *hover over
+            </p>
+          </div>
         </div>
 
         <div className="order-2 md:order-1 md:flex-1">
