@@ -32,6 +32,8 @@ export default function AboutSection() {
   const sectionRef = useRef(null)
   const [revealed, setRevealed] = useState(false)
   const [aboutTab, setAboutTab] = useState('skills')
+  const [hoverHintHidden, setHoverHintHidden] = useState(false)
+  const hoverHintTimerRef = useRef(null)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -61,6 +63,30 @@ export default function AboutSection() {
     observer.observe(target)
     return () => observer.disconnect()
   }, [])
+
+  useEffect(() => {
+    return () => {
+      if (hoverHintTimerRef.current) {
+        window.clearTimeout(hoverHintTimerRef.current)
+      }
+    }
+  }, [])
+
+  const handleHoverHintTap = () => {
+    if (typeof window === 'undefined') return
+
+    const noHover = window.matchMedia?.('(hover: none)').matches
+    if (!noHover) return
+
+    setHoverHintHidden(true)
+    if (hoverHintTimerRef.current) {
+      window.clearTimeout(hoverHintTimerRef.current)
+    }
+    hoverHintTimerRef.current = window.setTimeout(() => {
+      setHoverHintHidden(false)
+      hoverHintTimerRef.current = null
+    }, 1200)
+  }
 
   const techColumns = TECH_STACKS.reduce((columns, item, index) => {
     const columnIndex = Math.floor(index / 3)
@@ -105,7 +131,10 @@ export default function AboutSection() {
 
       <div className="mt-8 flex flex-col gap-10 md:flex-row md:items-start">
         <div className="order-1 flex justify-center md:order-2 md:justify-end">
-          <div className="flex flex-col items-center">
+          <div
+            className="group flex flex-col items-center"
+            onClick={handleHoverHintTap}
+          >
             <img
               className="h-64 w-64 cursor-pointer rounded-3xl object-cover filter grayscale transition-all duration-300 hover:grayscale-0 ring-1 ring-slate-800 md:h-80 md:w-80"
               src="/Portfolio.jpg"
@@ -113,7 +142,12 @@ export default function AboutSection() {
               loading="lazy"
               decoding="async"
             />
-            <p className="mt-2 text-xs font-medium text-slate-400 sm:text-sm">
+            <p
+              className={
+                'mt-2 text-xs font-medium text-slate-400 opacity-100 transition-opacity duration-200 group-hover:opacity-0 hover:opacity-0 sm:text-sm' +
+                (hoverHintHidden ? ' opacity-0' : '')
+              }
+            >
               *hover over
             </p>
           </div>
