@@ -1,6 +1,18 @@
+import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
+
 export default function IntroSection() {
+  const { ref: sectionRef, revealed } = useRevealOnScroll()
+
   return (
-    <section className="flex min-h-[calc(100svh-6rem)] items-center py-16">
+    <section
+      ref={sectionRef}
+      className={
+        (revealed
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-6') +
+        ' flex min-h-[calc(100svh-6rem)] items-center py-16 transition-all duration-700 ease-out'
+      }
+    >
       <div className="w-full text-left">
         <h1 className="font-heading mt-3 flex flex-wrap items-center gap-3 text-5xl font-semibold tracking-tight text-slate-200 sm:text-6xl lg:text-7xl">
           <span>Hi, I’m ASIF.</span>

@@ -1,9 +1,20 @@
-import { SOCIAL_LINKS } from '../components/SocialOverlay.jsx'
+import { SOCIAL_LINKS } from '../data/socialLinks.js'
 import { FaGitAlt, FaRegCopyright } from 'react-icons/fa'
+import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 
 export default function Footer() {
+  const { ref: footerRef, revealed } = useRevealOnScroll()
+
   return (
-    <footer className="border-t border-slate-800 py-10 text-left text-sm text-slate-400">
+    <footer
+      ref={footerRef}
+      className={
+        (revealed
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-6') +
+        ' border-t border-slate-800 py-10 text-left text-sm text-slate-400 transition-all duration-700 ease-out'
+      }
+    >
       <div className="mb-6 flex items-center gap-6 md:hidden">
         {SOCIAL_LINKS.map((item) => (
           <a

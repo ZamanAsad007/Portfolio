@@ -12,7 +12,9 @@ export default function Card({
   techStack,
 }) {
   const TitleWrapper = href ? 'a' : 'div'
-  const titleWrapperProps = href ? { href } : {}
+  const titleWrapperProps = href
+    ? { href, target: '_blank', rel: 'noopener noreferrer' }
+    : {}
 
   return (
     <div className="group block h-full overflow-hidden rounded-2xl bg-[rgb(48,50,64)] text-left shadow-md ring-1 ring-slate-800 transition-[transform,box-shadow] duration-200 ease-out hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(100,90,200,0.2)]">
@@ -34,6 +36,8 @@ export default function Card({
         {href ? (
           <a
             href={href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="absolute inset-0 z-10 rounded-2xl"
             aria-label={typeof title === 'string' ? title : 'Open link'}
           />

@@ -1,5 +1,6 @@
 import Card from '../components/Card.jsx'
 import SectionTitle from '../components/SectionTitle.jsx'
+import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 
 const PROJECTS = [
   {
@@ -33,8 +34,18 @@ const PROJECTS = [
 ]
 
 export default function ProjectsSection() {
+  const { ref: sectionRef, revealed } = useRevealOnScroll()
+
   return (
-    <section id="projects" className="py-16">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className={
+        revealed
+          ? 'py-16 opacity-100 translate-y-0 transition-all duration-700 ease-out'
+          : 'py-16 opacity-0 translate-y-6 transition-all duration-700 ease-out'
+      }
+    >
       <SectionTitle>Projects</SectionTitle>
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {PROJECTS.map((p, idx) => (

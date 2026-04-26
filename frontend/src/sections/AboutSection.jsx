@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 import SectionTitle from '../components/SectionTitle.jsx'
+import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 
 const TECH_STACKS = [
   'JavaScript',
@@ -29,40 +30,10 @@ const EDUCATION_HISTORY = [
 ]
 
 export default function AboutSection() {
-  const sectionRef = useRef(null)
-  const [revealed, setRevealed] = useState(false)
+  const { ref: sectionRef, revealed } = useRevealOnScroll()
   const [aboutTab, setAboutTab] = useState('skills')
   const [hoverHintHidden, setHoverHintHidden] = useState(false)
   const hoverHintTimerRef = useRef(null)
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches
-    if (prefersReducedMotion) {
-      setRevealed(true)
-      return
-    }
-
-    const target = sectionRef.current
-    if (!target) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0]
-        if (entry?.isIntersecting) {
-          setRevealed(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.15 }
-    )
-
-    observer.observe(target)
-    return () => observer.disconnect()
-  }, [])
 
   useEffect(() => {
     return () => {
