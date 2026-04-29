@@ -25,7 +25,7 @@ function App() {
     gmailTo
   )}&su=${encodeURIComponent(gmailSubject)}&body=${encodeURIComponent(gmailBody)}`
 
-  const cvHref = '/cv.pdf'
+  const cvHref = '/Resume_MdAsaduzzaman.pdf'
 
   return (
     <div
