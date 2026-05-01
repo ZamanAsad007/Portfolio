@@ -1,17 +1,101 @@
 import { useEffect, useRef, useState } from 'react'
+import { SiRender } from 'react-icons/si'
+import { TbApiOff } from 'react-icons/tb'
 
 import SectionTitle from '../components/SectionTitle.jsx'
 import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 
-const TECH_STACKS = [
-  'JavaScript',
-  'React',
-  'Vite',
-  'Tailwind CSS',
-  'Node.js',
-  'Express',
-  'MongoDB',
-  'Git & GitHub',
+const SKILL_SECTIONS = [
+  {
+    title: 'Languages',
+    stacks: [
+      { label: 'JavaScript', icons: [{ iconClass: 'devicon-javascript-plain', colored: true }] },
+      { label: 'TypeScript', icons: [{ iconClass: 'devicon-typescript-plain', colored: true }] },
+      { label: 'C', icons: [{ iconClass: 'devicon-c-plain', colored: true }] },
+      { label: 'C++', icons: [{ iconClass: 'devicon-cplusplus-plain', colored: true }] },
+      { label: 'Java', icons: [{ iconClass: 'devicon-java-plain', colored: true }] },
+      {
+        label: 'Python',
+        icons: [
+          {
+            kind: 'img',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Frameworks',
+    stacks: [
+      { label: 'React', icons: [{ iconClass: 'devicon-react-original', colored: true }] },
+      {
+        label: 'Next.js',
+        icons: [
+          {
+            kind: 'img',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg',
+            className: 'invert',
+          },
+        ],
+      },
+      { label: 'NestJS', icons: [{ iconClass: 'devicon-nestjs-plain', colored: true }] },
+      { label: 'Express.js', icons: [{ iconClass: 'devicon-express-original', colored: false }] },
+      {
+        label: 'Vite',
+        icons: [
+          {
+            kind: 'img',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    title: 'Cloud',
+    stacks: [
+      { label: 'Vercel', icons: [{ iconClass: 'devicon-vercel-original', colored: false }] },
+      { label: 'Render', icons: [{ kind: 'react', Component: SiRender }] },
+    ],
+  },
+  {
+    title: 'Databases',
+    stacks: [
+      { label: 'MongoDB', icons: [{ iconClass: 'devicon-mongodb-plain', colored: true }] },
+      { label: 'MySQL', icons: [{ iconClass: 'devicon-mysql-plain', colored: true }] },
+      { label: 'PostgreSQL', icons: [{ iconClass: 'devicon-postgresql-plain', colored: true }] },
+      { label: 'Redis', icons: [{ iconClass: 'devicon-redis-plain', colored: true }] },
+    ],
+  },
+  {
+    title: 'Architecture',
+    stacks: [{ label: 'REST API', icons: [{ kind: 'react', Component: TbApiOff }] }],
+  },
+  {
+    title: 'Tools',
+    stacks: [
+      {
+        label: 'Windows',
+        icons: [
+          {
+            kind: 'img',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg',
+          },
+        ],
+      },
+      { label: 'Git', icons: [{ iconClass: 'devicon-git-plain', colored: true }] },
+      {
+        label: 'Linux',
+        icons: [
+          {
+            kind: 'img',
+            src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg',
+          },
+        ],
+      },
+    ],
+  },
 ]
 
 const EDUCATION_HISTORY = [
@@ -58,13 +142,6 @@ export default function AboutSection() {
       hoverHintTimerRef.current = null
     }, 1200)
   }
-
-  const techColumns = TECH_STACKS.reduce((columns, item, index) => {
-    const columnIndex = Math.floor(index / 3)
-    columns[columnIndex] ??= []
-    columns[columnIndex].push(item)
-    return columns
-  }, [])
 
   const aboutTabs = [
     { key: 'skills', label: 'Skills' },
@@ -163,19 +240,67 @@ export default function AboutSection() {
 
             {aboutTab === 'skills' && (
               <div className="text-left">
-                <div className="text-sm font-semibold text-slate-200">
-                  Tech Stacks
-                </div>
-                <div className="mt-3 flex flex-col gap-6 sm:flex-row sm:flex-wrap sm:gap-x-10 sm:gap-y-4">
-                  {techColumns.map((column, columnIndex) => (
-                    <ul key={columnIndex} className="grid gap-2">
-                      {column.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-sm">
-                          <span className="font-mono text-slate-200">&gt;</span>
-                          <span className="text-slate-200">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                <div className="mt-1 space-y-3">
+                  {SKILL_SECTIONS.map((section) => (
+                    <div
+                      key={section.title}
+                      className="flex flex-col gap-2 sm:flex-row sm:items-start"
+                    >
+                      <div className="text-sm font-semibold text-slate-200 sm:w-28 sm:shrink-0">
+                        {section.title}:
+                      </div>
+                      <ul className="flex flex-wrap gap-2">
+                        {section.stacks.map((stack) => (
+                          <li key={stack.label}>
+                            <span className="inline-flex items-center gap-2 rounded-full bg-slate-950/60 px-3 py-1 text-sm text-slate-200 ring-1 ring-slate-800 transition-transform duration-200 ease-out hover:scale-[1.08] motion-reduce:transition-none motion-reduce:hover:transform-none">
+                              {stack.icons.length > 0 && (
+                                <span className="inline-flex items-center gap-2">
+                                  {stack.icons.map((icon) => (
+                                    <span
+                                      key={icon.iconClass ?? icon.src ?? icon.kind}
+                                      className="inline-flex"
+                                    >
+                                      {icon.kind === 'react' ? (
+                                        <icon.Component
+                                          aria-hidden="true"
+                                          className={
+                                            'h-5 w-5 text-slate-200 ' +
+                                            (icon.className ?? '')
+                                          }
+                                        />
+                                      ) : icon.kind === 'img' ? (
+                                        <img
+                                          aria-hidden="true"
+                                          alt=""
+                                          src={icon.src}
+                                          className={
+                                            'h-5 w-5 ' +
+                                            (icon.className ?? '')
+                                          }
+                                          loading="lazy"
+                                          decoding="async"
+                                        />
+                                      ) : (
+                                        <i
+                                          aria-hidden="true"
+                                          className={
+                                            'text-[20px] leading-none ' +
+                                            (icon.colored
+                                              ? icon.iconClass + ' colored'
+                                              : icon.iconClass + ' text-slate-200')
+                                          }
+                                        />
+                                      )}
+                                    </span>
+                                  ))}
+                                </span>
+                              )}
+                              <span>{stack.label}</span>
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -190,7 +315,7 @@ export default function AboutSection() {
                   {EDUCATION_HISTORY.map((row) => (
                     <div
                       key={row.title}
-                      className="rounded-xl bg-slate-900/40 p-4 ring-1 ring-slate-800"
+                      className="rounded-xl bg-slate-900/40 p-4 ring-1 ring-slate-800 transition-transform duration-200 ease-out hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:transform-none"
                     >
                       <div className="text-sm font-semibold text-slate-200">
                         {row.title}
