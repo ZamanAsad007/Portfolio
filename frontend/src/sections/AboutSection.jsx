@@ -161,20 +161,22 @@ export default function AboutSection() {
     >
       <SectionTitle>About</SectionTitle>
       <p className="mt-3 text-sm leading-6 text-slate-300">
-        My name is Md Asaduzzaman Asif, a fourth-year student at <span> </span>  
+        My name is Md Asaduzzaman Asif. I am a fourth-year student at{' '}
         <a
           href="https://www.uiu.ac.bd/about-uiu/"
           target="_blank"
           rel="noreferrer"
           className="inline-block text-[rgb(45,196,181)] no-underline border-b border-[rgba(45,196,181,0.4)] transition-colors hover:text-[#a89cf7] hover:border-[#a89cf7]"
         >
-          United International University
+          United International University 
         </a>
-        , currently in my final stretch before graduation. I am passionate
-        about web development and enjoy learning new technologies and solving
-        real-world problems through code. While I am still early in my career,
-        I bring a strong foundation in modern web technologies and a genuine
-        drive to grow and contribute.
+        <span> </span> and currently in my final year before graduation.
+        <span className="mt-2 block">
+          I am interested in web development and like learning new technologies.
+          I also enjoy solving practical problems using code. I have basic
+          knowledge of modern web development and I am focused on improving my
+          skills and gaining experience through real work.
+        </span>
       </p>
 
       <div className="mt-8 flex flex-col gap-10 md:flex-row md:items-start">
@@ -240,7 +242,7 @@ export default function AboutSection() {
 
             {aboutTab === 'skills' && (
               <div className="text-left">
-                <div className="mt-1 space-y-3">
+                <div className="mt-1 space-y-6">
                   {SKILL_SECTIONS.map((section) => (
                     <div
                       key={section.title}
