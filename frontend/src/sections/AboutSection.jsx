@@ -116,6 +116,7 @@ const EDUCATION_HISTORY = [
 export default function AboutSection() {
   const { ref: sectionRef, revealed } = useRevealOnScroll()
   const [aboutTab, setAboutTab] = useState('skills')
+  const [eduRevealed, setEduRevealed] = useState(false)
   const [hoverHintHidden, setHoverHintHidden] = useState(false)
   const hoverHintTimerRef = useRef(null)
 
@@ -148,6 +149,17 @@ export default function AboutSection() {
     { key: 'education', label: 'Education' },
     { key: 'work', label: 'Work' },
   ]
+
+  useEffect(() => {
+    if (aboutTab === 'education') {
+      // small timeout to ensure state change happens after tab click
+      const t = window.setTimeout(() => setEduRevealed(true), 20)
+      return () => window.clearTimeout(t)
+    }
+
+    // reset so re-clicking the tab will re-trigger the animation
+    setEduRevealed(false)
+  }, [aboutTab])
 
   return (
     <section
@@ -310,21 +322,25 @@ export default function AboutSection() {
 
             {aboutTab === 'education' && (
               <div className="text-left">
-                <div className="text-sm font-semibold text-slate-200">
-                  Education History
-                </div>
                 <div className="mt-4 grid gap-3">
-                  {EDUCATION_HISTORY.map((row) => (
-                    <div
-                      key={row.title}
-                      className="rounded-xl bg-slate-900/40 p-4 ring-1 ring-slate-800 transition-transform duration-200 ease-out hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:transform-none"
-                    >
-                      <div className="text-sm font-semibold text-slate-200">
-                        {row.title}
+                  {EDUCATION_HISTORY.map((row, idx) => {
+                    const delay = idx * 150
+                    return (
+                      <div
+                        key={row.title}
+                        style={{ transitionDelay: `${delay}ms` }}
+                        className={
+                          (eduRevealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6') +
+                          ' rounded-xl bg-slate-900/40 p-4 ring-1 ring-slate-800 transition-all duration-1000 ease-out hover:scale-[1.03] motion-reduce:transition-none motion-reduce:transform-none'
+                        }
+                      >
+                        <div className="text-sm font-semibold text-slate-200">
+                          {row.title}
+                        </div>
+                        <div className="mt-1 text-sm text-slate-300">{row.meta}</div>
                       </div>
-                      <div className="mt-1 text-sm text-slate-300">{row.meta}</div>
-                    </div>
-                  ))}
+                    )
+                  })}
                 </div>
               </div>
             )}

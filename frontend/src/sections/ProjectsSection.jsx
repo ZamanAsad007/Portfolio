@@ -5,13 +5,13 @@ import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 const PROJECTS = [
   {
     title: 'Movie Engine',
-    description: 'A full-stack movie browsing app built with the TMDB API. Users can browse popular movies, search by title, and manage their favourites and watched list through an authenticated account.',
+    description: 'AA full-stack movie browsing application built with the TMDB API. Users can browse popular movies and TV shows, search by title, get AI-powered movie recommendations through an integrated Gemini assistant, and manage bookmarks and watched lists with authenticated accounts. The platform also includes Google OAuth, email verification, public profile sharing, infinite scrolling, and responsive user dashboards backed by MongoDB.',
     href: 'https://movie-engine-five.vercel.app/',
     githubHref:'https://github.com/ZamanAsad007/MovieEngine',
     externalHref: 'https://movie-engine-five.vercel.app/',
     imageSrc: '/movieengine.png',
     imageAlt: 'Movie Engine project screenshot',
-    techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Google OAuth', 'TMDB API', 'Vite', 'Vercel', 'Render'],
+    techStack: ['React', 'Node.js', 'Express', 'Mongoose','MongoDB', 'JWT', 'Google OAuth','Passport.js', 'TMDB API', 'Vite', 'Vercel', 'Render'],
   },
   {
     title: 'The Thought Ledger',
@@ -42,25 +42,36 @@ export default function ProjectsSection() {
       id="projects"
       className={
         revealed
-          ? 'py-16 opacity-100 translate-y-0 transition-all duration-700 ease-out'
-          : 'py-16 opacity-0 translate-y-6 transition-all duration-700 ease-out'
+          ? 'py-16 opacity-100 translate-y-0 transition-all duration-1000 ease-out'
+          : 'py-16 opacity-0 translate-y-6 transition-all duration-1000 ease-out'
       }
     >
       <SectionTitle>Projects</SectionTitle>
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {PROJECTS.map((p, idx) => (
-          <Card
-            key={`${p.title}-${idx}`}
-            title={p.title}
-            description={p.description}
-            href={p.href}
-            githubHref={p.githubHref}
-            externalHref={p.externalHref}
-            imageSrc={p.imageSrc}
-            imageAlt={p.imageAlt}
-            techStack={p.techStack}
-          />
-        ))}
+        {PROJECTS.map((p, idx) => {
+          const delay = idx * 150
+          return (
+            <div
+              key={`${p.title}-${idx}`}
+              style={{ transitionDelay: `${delay}ms` }}
+              className={
+                (revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6') +
+                ' transition-all duration-1000 ease-out motion-reduce:transition-none motion-reduce:transform-none'
+              }
+            >
+              <Card
+                title={p.title}
+                description={p.description}
+                href={p.href}
+                githubHref={p.githubHref}
+                externalHref={p.externalHref}
+                imageSrc={p.imageSrc}
+                imageAlt={p.imageAlt}
+                techStack={p.techStack}
+              />
+            </div>
+          )
+        })}
       </div>
     </section>
   )
