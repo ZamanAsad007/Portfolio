@@ -155,10 +155,11 @@ export default function AboutSection() {
       // small timeout to ensure state change happens after tab click
       const t = window.setTimeout(() => setEduRevealed(true), 20)
       return () => window.clearTimeout(t)
+    } else {
+      // reset so re-clicking the tab will re-trigger the animation
+      const t = window.setTimeout(() => setEduRevealed(false), 0)
+      return () => window.clearTimeout(t)
     }
-
-    // reset so re-clicking the tab will re-trigger the animation
-    setEduRevealed(false)
   }, [aboutTab])
 
   return (

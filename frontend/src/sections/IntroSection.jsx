@@ -42,7 +42,7 @@ export default function IntroSection() {
           <span className="inline-flex flex-col items-center gap-2">
             <span className="whitespace-nowrap text-5xl font-semibold tracking-tight text-slate-200 sm:text-6xl lg:text-7xl">
               <span>Good </span>
-              <span style={{ color: greetingColor }}>{greetingPart}</span>,
+              <span className="transition-transform duration-200 ease-out hover:scale-[1.08] inline-block motion-reduce:transition-none motion-reduce:hover:transform-none" style={{ color: greetingColor }}>{greetingPart}</span>,
             </span>
 
             <span className="inline-flex items-center gap-3 whitespace-nowrap text-3xl font-semibold tracking-tight text-slate-200 sm:text-4xl lg:text-5xl">

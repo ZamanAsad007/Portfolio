@@ -35,7 +35,7 @@ export default function Navbar({ cvHref }) {
     <header className="sticky top-0 z-40 bg-[rgba(35,37,48,0.7)] backdrop-blur">
       <div className="mx-auto max-w-6xl px-4 py-6">
         <div className="flex items-center gap-4">
-          <a href="#top" className="inline-flex items-center" aria-label="Home">
+          <a href="#top" className="inline-flex items-center transition-transform duration-200 ease-out hover:scale-[1.08] motion-reduce:transition-none motion-reduce:hover:transform-none" aria-label="Home">
             <SiPlanetscale color="#e8a87c" size={32} />
           </a>
 
@@ -44,7 +44,7 @@ export default function Navbar({ cvHref }) {
               ref={mobileToggleRef}
               type="button"
               onClick={() => setMobileOpen((v) => !v)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900/40 text-slate-200 ring-1 ring-slate-800 hover:bg-slate-900/60"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900/40 text-slate-200 ring-1 ring-slate-800 transition-all duration-200 ease-out hover:scale-[1.08] hover:bg-slate-900/60 motion-reduce:transition-none motion-reduce:hover:transform-none"
               aria-label="Toggle menu"
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav"
@@ -61,7 +61,7 @@ export default function Navbar({ cvHref }) {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
-                className="text-sm text-slate-200 hover:text-slate-100"
+                className="text-sm text-slate-200 transition-all duration-200 ease-out hover:scale-[1.08] hover:text-slate-100 motion-reduce:transition-none motion-reduce:hover:transform-none"
                 href={item.href}
               >
                 {item.label}
@@ -69,7 +69,7 @@ export default function Navbar({ cvHref }) {
             ))}
 
             <a
-              className="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-slate-950 hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-slate-950 transition-all duration-200 ease-out hover:scale-[1.08] hover:brightness-110 motion-reduce:transition-none motion-reduce:hover:transform-none"
               href={cvHref}
               download
             >
@@ -87,7 +87,7 @@ export default function Navbar({ cvHref }) {
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.href}
-                className="rounded-xl bg-slate-900/40 px-3 py-2 text-center text-sm font-medium text-slate-200 ring-1 ring-slate-800 hover:bg-slate-900/60"
+                className="rounded-xl bg-slate-900/40 px-3 py-2 text-center text-sm font-medium text-slate-200 ring-1 ring-slate-800 transition-all duration-200 ease-out hover:scale-[1.08] hover:bg-slate-900/60 motion-reduce:transition-none motion-reduce:hover:transform-none"
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
               >
@@ -96,7 +96,7 @@ export default function Navbar({ cvHref }) {
             ))}
 
             <a
-              className="col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-3 py-2 text-sm font-semibold text-slate-950 hover:brightness-110"
+              className="col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-3 py-2 text-sm font-semibold text-slate-950 transition-all duration-200 ease-out hover:scale-[1.08] hover:brightness-110 motion-reduce:transition-none motion-reduce:hover:transform-none"
               href={cvHref}
               download
               onClick={() => setMobileOpen(false)}

@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import Navbar from './components/Navbar.jsx'
 import LoadingOverlay from './components/LoadingOverlay.jsx'
 import SocialOverlay from './components/SocialOverlay.jsx'
+import EmailOverlay from './components/EmailOverlay.jsx'
 import AboutSection from './sections/AboutSection.jsx'
 import ContactSection from './sections/ContactSection.jsx'
 import Footer from './sections/Footer.jsx'
@@ -43,6 +44,7 @@ function App() {
 
       {isAppReady && (
         <>
+          <EmailOverlay />
           <SocialOverlay />
           <Navbar cvHref={cvHref} />
 

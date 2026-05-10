@@ -1,5 +1,6 @@
 import { SOCIAL_LINKS } from '../data/socialLinks.js'
 import { FaGitAlt, FaRegCopyright } from 'react-icons/fa'
+import { MdEmail } from 'react-icons/md'
 import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 
 export default function Footer() {
@@ -16,6 +17,14 @@ export default function Footer() {
       }
     >
       <div className="mb-6 flex items-center gap-6 md:hidden">
+        <a
+          className="group inline-flex items-center justify-center text-slate-300 transition-transform duration-200 ease-out hover:scale-125 hover:text-slate-100"
+          href="mailto:asadasif1704@gmail.com"
+          aria-label="Email"
+          title="asadasif1704@gmail.com"
+        >
+          <MdEmail className="h-6 w-6" aria-hidden="true" />
+        </a>
         {SOCIAL_LINKS.map((item) => (
           <a
             key={item.label}
