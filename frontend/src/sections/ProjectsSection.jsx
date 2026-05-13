@@ -5,7 +5,7 @@ import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 const PROJECTS = [
   {
     title: 'Movie Engine',
-    description: 'A full-stack movie browsing application built with the TMDB API. Users can browse popular movies and TV shows, search by title, get AI-powered movie recommendations through an integrated Gemini assistant, and manage bookmarks and watched lists with authenticated accounts. The platform also includes Google OAuth, email verification, public profile sharing, infinite scrolling, and responsive user dashboards backed by MongoDB.',
+    description: 'A full-stack TMDB-based movie browsing app with AI recommendations,  authentication (Google OAuth/email verification), bookmarks and watched lists, public profiles, infinite scrolling, and MongoDB-backed dashboards.',
     href: 'https://movie-engine-five.vercel.app/',
     githubHref:'https://github.com/ZamanAsad007/MovieEngine',
     externalHref: 'https://movie-engine-five.vercel.app/',
