@@ -7,6 +7,7 @@ export default function Card({
   href,
   imageSrc,
   imageAlt = '',
+  imageClassName = 'aspect-[16/9] w-full object-cover',
   githubHref,
   externalHref,
   techStack,
@@ -21,7 +22,7 @@ export default function Card({
       <div className="relative">
         {imageSrc ? (
           <img
-            className="aspect-[16/9] w-full object-cover"
+            className={imageClassName}
             src={imageSrc}
             alt={imageAlt}
             loading="lazy"

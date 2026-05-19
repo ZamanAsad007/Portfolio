@@ -5,8 +5,11 @@ import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 const PUBLICATIONS = [
   {
     title: 'Blockchain-Based Hajj Pilgrim Registration System: Enhancing Transparency and Security, PID: 273',
-    description: 'Blockchain-Based Hajj Pilgrim Registration System: Enhancing Transparency and Security, Accepted at IEEE SPICSCON 2025 (To be published in IEEE Xplore).',
-    
+    description: 'Blockchain-Based Hajj Pilgrim Registration System: Enhancing Transparency and Security, Accepted at IEEE SPICSCON 2025',
+    href: 'https://ieeexplore.ieee.org/document/11504174',
+    externalHref: 'https://ieeexplore.ieee.org/document/11504174',
+    imageSrc: '/blockchainPaper.png',
+    imageAlt: 'Blockchain paper cover image',
   },
 ]
 
@@ -31,6 +34,9 @@ export default function PublicationsSection() {
             title={p.title}
             description={p.description}
             href={p.href}
+            externalHref={p.externalHref}
+            imageSrc={p.imageSrc}
+            imageAlt={p.imageAlt}
           />
         ))}
       </div>
