@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Navbar from './components/Navbar.jsx'
 import LoadingOverlay from './components/LoadingOverlay.jsx'
 import SocialOverlay from './components/SocialOverlay.jsx'
@@ -12,10 +12,56 @@ import PublicationsSection from './sections/PublicationsSection.jsx'
 
 function App() {
   const [isAppReady, setIsAppReady] = useState(false)
+  const hasRestoredScrollRef = useRef(false)
+
+  const scrollPositionKey = 'portfolio-scroll-position'
 
   const initMainAnimations = useCallback(() => {
     // Keep as a dedicated hook point for future animations.
   }, [])
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+
+    const saveScrollPosition = () => {
+      window.sessionStorage.setItem(
+        scrollPositionKey,
+        String(window.scrollY || window.pageYOffset || 0)
+      )
+    }
+
+    window.addEventListener('scroll', saveScrollPosition, { passive: true })
+    window.addEventListener('pagehide', saveScrollPosition)
+    window.addEventListener('beforeunload', saveScrollPosition)
+
+    return () => {
+      window.removeEventListener('scroll', saveScrollPosition)
+      window.removeEventListener('pagehide', saveScrollPosition)
+      window.removeEventListener('beforeunload', saveScrollPosition)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isAppReady || hasRestoredScrollRef.current) {
+      return
+    }
+
+    hasRestoredScrollRef.current = true
+
+    const savedScrollPosition = Number(
+      window.sessionStorage.getItem(scrollPositionKey)
+    )
+
+    if (!Number.isFinite(savedScrollPosition) || savedScrollPosition <= 0) {
+      return
+    }
+
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: savedScrollPosition, left: 0, behavior: 'auto' })
+    })
+  }, [isAppReady])
 
   const gmailTo = 'asadasif1704@gmail.com'
   const gmailSubject = 'Hello Asif'
