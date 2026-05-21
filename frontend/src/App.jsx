@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { MdCheckCircle } from 'react-icons/md'
 import Navbar from './components/Navbar.jsx'
 import LoadingOverlay from './components/LoadingOverlay.jsx'
 import SocialOverlay from './components/SocialOverlay.jsx'
@@ -12,7 +13,9 @@ import PublicationsSection from './sections/PublicationsSection.jsx'
 
 function App() {
   const [isAppReady, setIsAppReady] = useState(false)
+  const [copyFeedback, setCopyFeedback] = useState('')
   const hasRestoredScrollRef = useRef(false)
+  const copyFeedbackTimeoutRef = useRef(null)
 
   const scrollPositionKey = 'portfolio-scroll-position'
 
@@ -72,6 +75,49 @@ function App() {
     gmailTo
   )}&su=${encodeURIComponent(gmailSubject)}&body=${encodeURIComponent(gmailBody)}`
 
+  const showCopyFeedback = useCallback((message) => {
+    setCopyFeedback(message)
+
+    if (copyFeedbackTimeoutRef.current) {
+      window.clearTimeout(copyFeedbackTimeoutRef.current)
+    }
+
+    copyFeedbackTimeoutRef.current = window.setTimeout(() => {
+      setCopyFeedback('')
+      copyFeedbackTimeoutRef.current = null
+    }, 1800)
+  }, [])
+
+  const handleEmailCopy = useCallback(
+    async (event) => {
+      event.preventDefault()
+
+      if (typeof window === 'undefined') return
+
+      try {
+        await window.navigator.clipboard.writeText(gmailTo)
+        showCopyFeedback('Copied to clipboard')
+      } catch {
+        const fallbackInput = document.createElement('textarea')
+        fallbackInput.value = gmailTo
+        fallbackInput.setAttribute('readonly', '')
+        fallbackInput.style.position = 'fixed'
+        fallbackInput.style.opacity = '0'
+        fallbackInput.style.pointerEvents = 'none'
+        document.body.appendChild(fallbackInput)
+        fallbackInput.select()
+
+        try {
+          document.execCommand('copy')
+          showCopyFeedback('Copied to clipboard')
+        } finally {
+          document.body.removeChild(fallbackInput)
+        }
+      }
+    },
+    [gmailTo, showCopyFeedback]
+  )
+
   const handleContactClick = (e) => {
     if (typeof window === 'undefined') return
 
@@ -109,7 +155,7 @@ function App() {
 
       {isAppReady && (
         <>
-          <EmailOverlay />
+          <EmailOverlay onEmailClick={handleEmailCopy} />
           <SocialOverlay />
           <Navbar cvHref={cvHref} />
 
@@ -125,11 +171,22 @@ function App() {
                 gmailComposeUrl={gmailComposeUrl}
                 onContactClick={handleContactClick}
               />
-              <Footer />
+              <Footer onEmailClick={handleEmailCopy} />
             </main>
 
             <div className="hidden lg:block" />
           </div>
+
+          {copyFeedback && (
+            <div
+              className="fixed bottom-8 left-10 z-[60] flex items-center gap-2 rounded-2xl border border-emerald-400/40 bg-gradient-to-r from-slate-950/95 via-slate-900/95 to-emerald-950/90 px-4 py-3 text-sm font-semibold text-slate-50 shadow-[0_18px_40px_rgba(0,0,0,0.45)] ring-1 ring-emerald-400/20 backdrop-blur-md"
+              role="status"
+              aria-live="polite"
+            >
+              <MdCheckCircle className="h-5 w-5 shrink-0 text-emerald-300" aria-hidden="true" />
+              <span>{copyFeedback}</span>
+            </div>
+          )}
         </>
       )}
     </div>

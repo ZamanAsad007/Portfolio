@@ -3,7 +3,7 @@ import { FaGitAlt, FaRegCopyright } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 
-export default function Footer() {
+export default function Footer({ onEmailClick }) {
   const { ref: footerRef, revealed } = useRevealOnScroll()
 
   return (
@@ -17,14 +17,15 @@ export default function Footer() {
       }
     >
       <div className="mb-6 flex items-center gap-6 lg:hidden">
-        <a
+        <button
           className="group inline-flex items-center justify-center text-slate-300 transition-transform duration-200 ease-out hover:scale-125 hover:text-slate-100"
-          href="mailto:asadasif1704@gmail.com"
+          type="button"
           aria-label="Email"
           title="asadasif1704@gmail.com"
+          onClick={onEmailClick}
         >
           <MdEmail className="h-6 w-6" aria-hidden="true" />
-        </a>
+        </button>
         {SOCIAL_LINKS.map((item) => (
           <a
             key={item.label}
