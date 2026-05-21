@@ -261,7 +261,7 @@ export default function SolarSystem() {
   return (
     <div
       className="relative mx-auto w-full max-w-[60rem]"
-      style={{ height: 'clamp(280px, 40vw, 440px)' }}
+      style={{ height: 'clamp(280px, 35vw, 380px)' }}
     >
       <Canvas
         gl={{ alpha: true, antialias: true }}
@@ -281,9 +281,6 @@ export default function SolarSystem() {
           <Scene />
         </Suspense>
       </Canvas>
-      <p className="absolute bottom-0 left-0 right-0 text-center text-xs text-slate-600 select-none pointer-events-none">
-        drag to rotate · scroll to zoom
-      </p>
     </div>
   )
 }

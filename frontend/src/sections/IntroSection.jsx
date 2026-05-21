@@ -38,8 +38,8 @@ export default function IntroSection() {
         ' flex min-h-[calc(100svh-6rem)] items-center py-16 transition-all duration-700 ease-out'
       }
     >
-      <div className="grid w-full items-center gap-12 lg:grid-cols-[minmax(0,0.62fr)_minmax(38rem,1.38fr)] lg:gap-32 xl:grid-cols-[minmax(0,0.56fr)_minmax(44rem,1.44fr)] xl:gap-40">
-        <div className="w-full text-center lg:text-left">
+      <div className="grid w-full items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
+        <div className="w-full text-center lg:text-left relative z-10">
           <h1 className="font-heading mt-3">
             <span className="inline-flex flex-col items-center gap-2 lg:items-start">
               <span className="whitespace-nowrap text-5xl font-semibold tracking-tight text-slate-200 sm:text-6xl lg:text-7xl">
@@ -76,11 +76,12 @@ export default function IntroSection() {
               decoding="async"
             />
             <br />
-            Still Learning, Still Growing.
+            
+            Always Learning, Always Building.
           </p>
         </div>
 
-        <div className="w-full lg:justify-self-end lg:pl-16 xl:pl-24">
+        <div className="w-full lg:justify-self-end">
           <SolarSystem />
         </div>
       </div>
