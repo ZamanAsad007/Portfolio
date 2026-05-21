@@ -1,4 +1,5 @@
 import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
+import SolarSystem from '../components/SolarSystem.jsx'
 
 function getTimeOfDay(date = new Date()) {
   const hour = date.getHours()
@@ -37,41 +38,52 @@ export default function IntroSection() {
         ' flex min-h-[calc(100svh-6rem)] items-center py-16 transition-all duration-700 ease-out'
       }
     >
-      <div className="w-full text-center">
-        <h1 className="font-heading mt-3">
-          <span className="inline-flex flex-col items-center gap-2">
-            <span className="whitespace-nowrap text-5xl font-semibold tracking-tight text-slate-200 sm:text-6xl lg:text-7xl">
-              <span>Good </span>
-              <span className="transition-transform duration-200 ease-out hover:scale-[1.08] inline-block motion-reduce:transition-none motion-reduce:hover:transform-none" style={{ color: greetingColor }}>{greetingPart}</span>,
-            </span>
+      <div className="grid w-full items-center gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10">
+        <div className="w-full text-center lg:text-left relative z-10">
+          <h1 className="font-heading mt-3">
+            <span className="inline-flex flex-col items-center gap-2 lg:items-start">
+              <span className="whitespace-nowrap text-5xl font-semibold tracking-tight text-slate-200 sm:text-6xl lg:text-7xl">
+                <span>Good </span>
+                <span
+                  className="inline-block transition-transform duration-200 ease-out hover:scale-[1.08] motion-reduce:transition-none motion-reduce:hover:transform-none"
+                  style={{ color: greetingColor }}
+                >
+                  {greetingPart}
+                </span>
+                ,
+              </span>
 
-            <span className="inline-flex items-center gap-3 whitespace-nowrap text-3xl font-semibold tracking-tight text-slate-200 sm:text-4xl lg:text-5xl">
-              <span>My Name is Asif.</span>
-              <img
-                src="/wave.gif"
-                alt="Waving hand"
-                className="h-11 w-11 select-none sm:h-14 sm:w-14 lg:h-16 lg:w-16"
-                loading="lazy"
-                decoding="async"
-              />
+              <span className="inline-flex items-center gap-3 whitespace-nowrap text-3xl font-semibold tracking-tight text-slate-200 sm:text-4xl lg:text-5xl">
+                <span>My Name is Asif.</span>
+                <img
+                  src="/wave.gif"
+                  alt="Waving hand"
+                  className="h-11 w-11 select-none sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </span>
             </span>
-          </span>
-        </h1>
-        <br />
-        
-        <p className="font-body mt-5 !text-center text-lg leading-8 text-slate-300 sm:text-xl sm:leading-9">
-          23 year old MERN developer from Dhaka, Bangladesh.
-          <img
-            src="/bd-flag.svg"
-            alt="Bangladesh"
-            className="ml-2 inline-block h-5 w-5 align-text-bottom sm:h-6 sm:w-6"
-            loading="lazy"
-            decoding="async"
-          />
-          <br />
-          Still Learning, Still Growing.
-          
-        </p>
+          </h1>
+
+          <p className="font-body mt-5 !text-center text-lg leading-8 text-slate-300 sm:text-xl sm:leading-9 lg:!text-left">
+            23 year old MERN developer from Dhaka, Bangladesh.
+            <img
+              src="/bd-flag.svg"
+              alt="Bangladesh"
+              className="ml-2 inline-block h-5 w-5 align-text-bottom sm:h-6 sm:w-6"
+              loading="lazy"
+              decoding="async"
+            />
+            <br />
+            
+            Always Learning, Always Building.
+          </p>
+        </div>
+
+        <div className="w-full lg:justify-self-end">
+          <SolarSystem />
+        </div>
       </div>
     </section>
   )
