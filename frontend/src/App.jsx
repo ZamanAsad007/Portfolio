@@ -72,6 +72,25 @@ function App() {
     gmailTo
   )}&su=${encodeURIComponent(gmailSubject)}&body=${encodeURIComponent(gmailBody)}`
 
+  const handleContactClick = (e) => {
+    if (typeof window === 'undefined') return
+
+    const ua = window.navigator.userAgent
+    const isMobileUA =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua)
+    const isIPadTouch =
+      window.navigator.platform === 'MacIntel' &&
+      window.navigator.maxTouchPoints > 1
+
+    if (isMobileUA || isIPadTouch) {
+      e.preventDefault()
+      const mailtoUrl = `mailto:${gmailTo}?subject=${encodeURIComponent(
+        gmailSubject
+      )}&body=${encodeURIComponent(gmailBody)}`
+      window.location.href = mailtoUrl
+    }
+  }
+
   const cvHref = '/Resume_MdAsaduzzaman.pdf'
 
   return (
@@ -102,7 +121,10 @@ function App() {
               <AboutSection />
               <ProjectsSection />
               <PublicationsSection />
-              <ContactSection gmailComposeUrl={gmailComposeUrl} />
+              <ContactSection
+                gmailComposeUrl={gmailComposeUrl}
+                onContactClick={handleContactClick}
+              />
               <Footer />
             </main>
 

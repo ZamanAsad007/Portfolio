@@ -4,7 +4,7 @@ export default function EmailOverlay() {
   const email = 'asadasif1704@gmail.com'
 
   return (
-    <div className="fixed bottom-8 left-10 z-50 hidden md:block">
+    <div className="fixed bottom-8 left-10 z-50 hidden lg:block">
       <div className="flex flex-col items-center gap-2 group">
         <div className="h-12 w-0.5 bg-gradient-to-b from-slate-400 to-transparent transition-all duration-200 ease-out group-hover:h-20" />
         <a

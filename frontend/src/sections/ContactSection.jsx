@@ -1,6 +1,6 @@
 import SectionTitle from '../components/SectionTitle.jsx'
 
-export default function ContactSection({ gmailComposeUrl }) {
+export default function ContactSection({ gmailComposeUrl, onContactClick }) {
   return (
     <section id="contact" className="py-16">
       <SectionTitle>Contact</SectionTitle>
@@ -11,6 +11,7 @@ export default function ContactSection({ gmailComposeUrl }) {
         <a
           className="inline-flex items-center justify-center rounded-xl bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-950 hover:bg-white"
           href={gmailComposeUrl}
+          onClick={onContactClick}
           target="_blank"
           rel="noreferrer"
         >
