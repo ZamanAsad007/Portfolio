@@ -2,7 +2,7 @@ import { SOCIAL_LINKS } from '../data/socialLinks.js'
 
 export default function SocialOverlay() {
   return (
-    <div className="fixed bottom-8 right-10 z-50 hidden md:block">
+    <div className="fixed bottom-8 right-10 z-50 hidden lg:block">
       <div className="flex flex-col items-center gap-8">
         {SOCIAL_LINKS.map((item) => (
           <a

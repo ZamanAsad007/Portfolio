@@ -16,7 +16,7 @@ export default function Footer() {
         ' border-t border-slate-800 py-10 text-left text-sm text-slate-400 transition-all duration-700 ease-out'
       }
     >
-      <div className="mb-6 flex items-center gap-6 md:hidden">
+      <div className="mb-6 flex items-center gap-6 lg:hidden">
         <a
           className="group inline-flex items-center justify-center text-slate-300 transition-transform duration-200 ease-out hover:scale-125 hover:text-slate-100"
           href="mailto:asadasif1704@gmail.com"

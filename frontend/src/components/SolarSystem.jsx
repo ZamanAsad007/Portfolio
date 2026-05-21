@@ -260,8 +260,7 @@ function Scene() {
 export default function SolarSystem() {
   return (
     <div
-      className="relative mx-auto w-full max-w-[60rem]"
-      style={{ height: 'clamp(280px, 35vw, 380px)' }}
+      className="relative mx-auto w-full max-w-[60rem] h-[320px] sm:h-[420px] lg:h-[360px] xl:h-[400px]"
     >
       <Canvas
         gl={{ alpha: true, antialias: true }}
