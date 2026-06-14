@@ -14,6 +14,16 @@ const PROJECTS = [
     techStack: ['React', 'Node.js', 'Express', 'Mongoose','MongoDB', 'JWT', 'Google OAuth','Passport.js', 'TMDB API', 'Vite', 'Vercel', 'Render'],
   },
   {
+    title: 'Epocha',
+    description: 'An interactive historical map web app where users explore world events through time-filtered markers, Wikipedia-powered place details, and an AI story mode, built with React, Leaflet.js, and a PostgreSQL/Express backend.',
+    href: 'https://epochatry.vercel.app/',
+    githubHref:'https://github.com/ZamanAsad007/Epocha',
+    externalHref: 'https://epochatry.vercel.app/',
+    imageSrc: '/epocha.png',
+    imageAlt: 'Epocha project screenshot',
+    techStack: ['React', 'Node.js', 'Express', 'PostgreSQL', 'JWT', 'Multer', 'Axios', 'Bootstrap 5', 'bcrypt', 'Nodemailer'],
+  },
+  {
     title: 'The Thought Ledger',
     description: 'A full-stack blog platform where authors can write rich-text posts with inline images, manage their blogs, and track post analytics. Features author discovery, location tagging, and a public blog feed.',
     href: 'https://github.com/ZamanAsad007/The-Thought-Ledger',
@@ -21,15 +31,6 @@ const PROJECTS = [
     imageSrc: '/thoughtledger.png',
     imageAlt: 'The Thought Ledger project screenshot',
     techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT', 'Tiptap', 'Multer', 'Recharts', 'Axios', 'Vite'],
-  },
-  {
-    title: 'UrbanEase',
-    description: 'A community-based local issue reporting platform where residents can report area problems like broken streetlights or garbage, and moderators can track and resolve them. Features role-based access for admins, moderators, and users.',
-    href: 'https://github.com/ZamanAsad007/UrbanEase',
-    githubHref:'https://github.com/ZamanAsad007/UrbanEase',
-    imageSrc: '/urbanease.png',
-    imageAlt: 'UrbanEase project screenshot',
-    techStack: ['React', 'Node.js', 'Express', 'MySQL', 'JWT', 'Multer', 'Axios', 'Bootstrap 5', 'bcrypt', 'Nodemailer'],
   },
 ]
 

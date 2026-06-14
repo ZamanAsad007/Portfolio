@@ -12,9 +12,10 @@ export default function Card({
   externalHref,
   techStack,
 }) {
-  const TitleWrapper = href ? 'a' : 'div'
-  const titleWrapperProps = href
-    ? { href, target: '_blank', rel: 'noopener noreferrer' }
+  const primaryHref = externalHref || href
+  const TitleWrapper = primaryHref ? 'a' : 'div'
+  const titleWrapperProps = primaryHref
+    ? { href: primaryHref, target: '_blank', rel: 'noopener noreferrer' }
     : {}
 
   return (
@@ -34,9 +35,9 @@ export default function Card({
           </div>
         )}
 
-        {href ? (
+        {primaryHref ? (
           <a
-            href={href}
+            href={primaryHref}
             target="_blank"
             rel="noopener noreferrer"
             className="absolute inset-0 z-10 rounded-2xl"
