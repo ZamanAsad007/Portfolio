@@ -67,11 +67,17 @@ function loadTexture(url, invert) {
   TEX_CACHE[key] = tex
 
   const img = new Image()
-  img.crossOrigin = 'anonymous'
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    img.crossOrigin = 'anonymous'
+  }
   img.onload = () => {
     ctx.clearRect(0, 0, 128, 128)
     if (invert) ctx.filter = 'invert(1)'
     ctx.drawImage(img, 8, 8, 112, 112)
+    tex.needsUpdate = true
+  }
+  img.onerror = () => {
+    // Keep canvas blank if image fails to load
     tex.needsUpdate = true
   }
   img.src = url
@@ -160,18 +166,20 @@ function OrbitingIcon({ item, index, total, radius, speed, color }) {
         </mesh>
 
         {/* label */}
-        <Text
-          position={[0, -0.52, 0]}
-          fontSize={0.18}
-          color="white"
-          anchorX="center"
-          anchorY="top"
-          fillOpacity={0.9}
-          outlineWidth={0.01}
-          outlineColor="#000000"
-        >
-          {item.name}
-        </Text>
+        <Suspense fallback={null}>
+          <Text
+            position={[0, -0.52, 0]}
+            fontSize={0.18}
+            color="white"
+            anchorX="center"
+            anchorY="top"
+            fillOpacity={0.9}
+            outlineWidth={0.01}
+            outlineColor="#000000"
+          >
+            {item.name}
+          </Text>
+        </Suspense>
       </Billboard>
     </group>
   )
