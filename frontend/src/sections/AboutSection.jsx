@@ -146,7 +146,7 @@ export default function AboutSection() {
           : 'py-16 opacity-0 translate-y-6 transition-all duration-700 ease-out'
       }
     >
-      <SectionTitle>About</SectionTitle>
+      <SectionTitle revealed={revealed}>About</SectionTitle>
       <p className="mt-3 text-sm leading-6 text-slate-300">
         My name is Md Asaduzzaman Asif. I'm a recent graduate from{' '}
         <a

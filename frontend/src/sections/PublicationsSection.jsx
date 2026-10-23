@@ -26,7 +26,7 @@ export default function PublicationsSection() {
           : 'py-16 opacity-0 translate-y-6 transition-all duration-700 ease-out'
       }
     >
-      <SectionTitle>Publications</SectionTitle>
+      <SectionTitle revealed={revealed}>Publications</SectionTitle>
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {PUBLICATIONS.map((p, idx) => (
           <Card
