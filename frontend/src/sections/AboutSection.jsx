@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SiRender } from 'react-icons/si'
 import { TbApiOff } from 'react-icons/tb'
 
@@ -101,7 +101,7 @@ const SKILL_SECTIONS = [
 const EDUCATION_HISTORY = [
   {
     title: 'BSc — Computer Science & Engineering',
-    meta: 'United International University —> Oct 22 - Ongoing',
+    meta: 'United International University —> Oct 2022 - Nov 2026',
   },
   {
     title: 'HSC — Cambrian College, Dhaka',
@@ -117,32 +117,6 @@ export default function AboutSection() {
   const { ref: sectionRef, revealed } = useRevealOnScroll()
   const [aboutTab, setAboutTab] = useState('skills')
   const [eduRevealed, setEduRevealed] = useState(false)
-  const [hoverHintHidden, setHoverHintHidden] = useState(false)
-  const hoverHintTimerRef = useRef(null)
-
-  useEffect(() => {
-    return () => {
-      if (hoverHintTimerRef.current) {
-        window.clearTimeout(hoverHintTimerRef.current)
-      }
-    }
-  }, [])
-
-  const handleHoverHintTap = () => {
-    if (typeof window === 'undefined') return
-
-    const noHover = window.matchMedia?.('(hover: none)').matches
-    if (!noHover) return
-
-    setHoverHintHidden(true)
-    if (hoverHintTimerRef.current) {
-      window.clearTimeout(hoverHintTimerRef.current)
-    }
-    hoverHintTimerRef.current = window.setTimeout(() => {
-      setHoverHintHidden(false)
-      hoverHintTimerRef.current = null
-    }, 1200)
-  }
 
   const aboutTabs = [
     { key: 'skills', label: 'Skills' },
@@ -174,16 +148,16 @@ export default function AboutSection() {
     >
       <SectionTitle>About</SectionTitle>
       <p className="mt-3 text-sm leading-6 text-slate-300">
-        My name is Md Asaduzzaman Asif. I am a fourth-year student at{' '}
+        My name is Md Asaduzzaman Asif. I'm a recent graduate from{' '}
         <a
           href="https://www.uiu.ac.bd/about-uiu/"
           target="_blank"
           rel="noreferrer"
           className="inline-block text-[rgb(45,196,181)] no-underline border-b border-[rgba(45,196,181,0.4)] transition-colors hover:text-[#a89cf7] hover:border-[#a89cf7]"
         >
-          United International University 
-        </a>
-        <span> </span> and currently in my final year before graduation.
+          United International University
+        </a>{' '}
+        and looking for opportunities.
         <span className="mt-2 block">
           I am interested in web development and like learning new technologies.
           I also enjoy solving practical problems using code. I have basic
@@ -194,25 +168,14 @@ export default function AboutSection() {
 
       <div className="mt-8 flex flex-col gap-10 md:flex-row md:items-start">
         <div className="order-1 flex justify-center md:order-2 md:justify-end">
-          <div
-            className="group flex flex-col items-center"
-            onClick={handleHoverHintTap}
-          >
+          <div className="flex flex-col items-center">
             <img
-              className="h-64 w-64 cursor-pointer rounded-3xl object-cover filter grayscale transition-all duration-300 hover:grayscale-0 ring-1 ring-slate-800 md:h-80 md:w-80"
+              className="h-64 w-64 rounded-3xl object-cover ring-1 ring-slate-800 md:h-80 md:w-80"
               src="/Portfolio.jpg"
-              alt="image description"
+              alt="Md Asaduzzaman Asif"
               loading="lazy"
               decoding="async"
             />
-            <p
-              className={
-                'mt-2 text-xs font-medium text-slate-400 opacity-100 transition-opacity duration-200 group-hover:opacity-0 hover:opacity-0 sm:text-sm' +
-                (hoverHintHidden ? ' opacity-0' : '')
-              }
-            >
-              *hover over
-            </p>
           </div>
         </div>
 
