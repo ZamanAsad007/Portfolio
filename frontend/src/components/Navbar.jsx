@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { LiaDownloadSolid } from 'react-icons/lia'
+import { LiaExternalLinkAltSolid } from 'react-icons/lia'
 import { SiPlanetscale } from 'react-icons/si'
 
 const NAV_ITEMS = [
@@ -71,9 +71,10 @@ export default function Navbar({ cvHref }) {
             <a
               className="inline-flex items-center gap-2 rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-slate-950 transition-all duration-200 ease-out hover:scale-[1.08] hover:brightness-110 motion-reduce:transition-none motion-reduce:hover:transform-none"
               href={cvHref}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              CV <LiaDownloadSolid className="h-5 w-5" aria-hidden="true" />
+              CV <LiaExternalLinkAltSolid className="h-5 w-5" aria-hidden="true" />
             </a>
           </nav>
         </div>
@@ -98,10 +99,11 @@ export default function Navbar({ cvHref }) {
             <a
               className="col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand px-3 py-2 text-sm font-semibold text-slate-950 transition-all duration-200 ease-out hover:scale-[1.08] hover:brightness-110 motion-reduce:transition-none motion-reduce:hover:transform-none"
               href={cvHref}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileOpen(false)}
             >
-              CV <LiaDownloadSolid className="h-5 w-5" aria-hidden="true" />
+              CV <LiaExternalLinkAltSolid className="h-5 w-5" aria-hidden="true" />
             </a>
           </div>
         </div>
