@@ -1,4 +1,5 @@
 import Card from '../components/Card.jsx'
+import GithubMoreCard from '../components/GithubMoreCard.jsx'
 import SectionTitle from '../components/SectionTitle.jsx'
 import useRevealOnScroll from '../hooks/useRevealOnScroll.js'
 
@@ -81,6 +82,16 @@ export default function ProjectsSection() {
             </div>
           )
         })}
+
+        <div
+          style={{ transitionDelay: `${PROJECTS.length * 150}ms` }}
+          className={
+            (revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6') +
+            ' sm:col-span-2 lg:col-span-2 transition-all duration-1000 ease-out motion-reduce:transition-none motion-reduce:transform-none'
+          }
+        >
+          <GithubMoreCard />
+        </div>
       </div>
     </section>
   )
